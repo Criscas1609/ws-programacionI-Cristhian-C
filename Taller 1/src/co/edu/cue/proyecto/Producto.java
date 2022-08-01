@@ -10,6 +10,18 @@ public class Producto {
     private int unid;
     private boolean disponibilidad;
     private double precio;
+    private int vecesPrestamo;
+
+    private int cantidadPrestamo;
+    public int getCantidadPrestamo() {
+        return cantidadPrestamo;
+    }
+
+    public void setCantidadPrestamo(int cantidadPrestamo) {
+        this.cantidadPrestamo = cantidadPrestamo;
+    }
+
+
 
     public String getNombre() {
         return nombre;
@@ -23,6 +35,14 @@ public class Producto {
         return unid;
     }
 
+    public int getVecesPrestamo() {
+        return vecesPrestamo;
+    }
+
+    public void setVecesPrestamo(int vecesPrestamo) {
+        this.vecesPrestamo = vecesPrestamo;
+    }
+
     public boolean getDisponibilidad(){
         return disponibilidad;
     }
@@ -31,11 +51,23 @@ public class Producto {
         return precio;
     }
 
-    public void setProducto(String nombre, double codeg, int unid, boolean disponibilidad, double precio){
+    public Producto(String nombre, double codeg, int unid, boolean disponibilidad, double precio, int vecesPrestamo,int cantidadPrestamo){
         this.nombre=nombre;
         this.codeg=codeg;
         this.unid=unid;
         this.disponibilidad=disponibilidad;
         this.precio=precio;
+        this.vecesPrestamo=vecesPrestamo;
+        this.cantidadPrestamo=cantidadPrestamo;
+    }
+
+    public void setProducto(String nombre, double codeg, int unid, boolean disponibilidad, double precio, int vecesPrestamo,int cantidadPrestamo){
+        this.nombre=nombre;
+        this.codeg=codeg;
+        this.unid=unid;
+        this.disponibilidad=disponibilidad;
+        this.precio=precio;
+        this.vecesPrestamo=vecesPrestamo;
+        this.cantidadPrestamo=cantidadPrestamo;
     }
 }
