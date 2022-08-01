@@ -69,10 +69,18 @@ public class Main {
                                     null,"Ingrese lo que quiere hacer: ", "Opciones de productos", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null,    // null para icono por defecto.
                                     new Object[] { "Consultar producto por codigo","Consultar prestamos por nombre", "Consultar cantidad total de unidades prestadas", "Remplazar objeto","Salir" },"null");
                             switch (menuProductos) {
-                                case 0 -> consultarCodigo(listaProducto, Double.parseDouble(JOptionPane.showInputDialog("ingrese el codigo del producto")));
-                                case 1 -> consultarPrestamos(listaProducto, JOptionPane.showInputDialog("Digite el nombre del producto"));
-                                case 2 -> consultarUnidadesPrestadas(listaProducto, Double.parseDouble(JOptionPane.showInputDialog("ingrese el codigo del producto")));
-                                case 3 -> remplazarObjeto(listaProducto);
+                                case 0:
+                                    consultarCodigo(listaProducto, Double.parseDouble(JOptionPane.showInputDialog("ingrese el codigo del producto")));
+                                    break;
+                                case 1:
+                                    consultarPrestamos(listaProducto, JOptionPane.showInputDialog("Digite el nombre del producto"));
+                                    break;
+                                case 2:
+                                    consultarUnidadesPrestadas(listaProducto, Double.parseDouble(JOptionPane.showInputDialog("ingrese el codigo del producto")));
+                                    break;
+                                case 3:
+                                    remplazarObjeto(listaProducto);
+                                    break;
                             }
 
                         }while (menuProductos!=4);
@@ -154,9 +162,15 @@ public class Main {
                 null,"Ingrese el producto que quiere remplazar "+"\n"+message, "Opciones de productos", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null,    // null para icono por defecto.
                 new Object[] {  "Producto 1","Producto 2","Producto 3" },"null");
         switch (option) {
-            case 0 -> listaProducto[option].setProducto(JOptionPane.showInputDialog("Digite el nombre del nuevo producto"), Double.parseDouble(JOptionPane.showInputDialog("Digite el codigo del nuevo producto")), Integer.parseInt(JOptionPane.showInputDialog("Digite el numero de unidades del producto")), Boolean.parseBoolean(JOptionPane.showInputDialog("Digite la disponibilidad del producto (true or false)")), Double.parseDouble(JOptionPane.showInputDialog("Digite el precio del nuevo producto")), 0, 0);
-            case 1 -> listaProducto[option].setProducto(JOptionPane.showInputDialog("Digite el nombre del nuevo producto"), Double.parseDouble(JOptionPane.showInputDialog("Digite el codigo del nuevo producto")), Integer.parseInt(JOptionPane.showInputDialog("Digite el numero de unidades del producto")), Boolean.parseBoolean(JOptionPane.showInputDialog("Digite la disponibilidad del producto (true or false)")), Double.parseDouble(JOptionPane.showInputDialog("Digite el precio del nuevo producto")), 0, 0);
-            case 2 -> listaProducto[option].setProducto(JOptionPane.showInputDialog("Digite el nombre del nuevo producto"), Double.parseDouble(JOptionPane.showInputDialog("Digite el codigo del nuevo producto")), Integer.parseInt(JOptionPane.showInputDialog("Digite el numero de unidades del producto")), Boolean.parseBoolean(JOptionPane.showInputDialog("Digite la disponibilidad del producto (true or false)")), Double.parseDouble(JOptionPane.showInputDialog("Digite el precio del nuevo producto")), 0, 0);
+            case 0:
+                listaProducto[option].setProducto(JOptionPane.showInputDialog("Digite el nombre del nuevo producto"), Double.parseDouble(JOptionPane.showInputDialog("Digite el codigo del nuevo producto")), Integer.parseInt(JOptionPane.showInputDialog("Digite el numero de unidades del producto")), Boolean.parseBoolean(JOptionPane.showInputDialog("Digite la disponibilidad del producto (true or false)")), Double.parseDouble(JOptionPane.showInputDialog("Digite el precio del nuevo producto")), 0, 0);
+                break;
+            case 1:
+                listaProducto[option].setProducto(JOptionPane.showInputDialog("Digite el nombre del nuevo producto"), Double.parseDouble(JOptionPane.showInputDialog("Digite el codigo del nuevo producto")), Integer.parseInt(JOptionPane.showInputDialog("Digite el numero de unidades del producto")), Boolean.parseBoolean(JOptionPane.showInputDialog("Digite la disponibilidad del producto (true or false)")), Double.parseDouble(JOptionPane.showInputDialog("Digite el precio del nuevo producto")), 0, 0);
+                break;
+            case 2:
+                listaProducto[option].setProducto(JOptionPane.showInputDialog("Digite el nombre del nuevo producto"), Double.parseDouble(JOptionPane.showInputDialog("Digite el codigo del nuevo producto")), Integer.parseInt(JOptionPane.showInputDialog("Digite el numero de unidades del producto")), Boolean.parseBoolean(JOptionPane.showInputDialog("Digite la disponibilidad del producto (true or false)")), Double.parseDouble(JOptionPane.showInputDialog("Digite el precio del nuevo producto")), 0, 0);
+                break;
         }
         JOptionPane.showMessageDialog(null,"El producto se guardo como: \n"+"Producto "+(option+1)+": "+listaProducto[option].getNombre()+"   Codigo: "+listaProducto[option].getCodeg()+"   Unidades: "+listaProducto[option].getUnid()+"  Disponibilidad: "+listaProducto[option].getDisponibilidad()+"   Precio: "+listaProducto[option].getPrecio()+"   Veces en prestamo: "+listaProducto[option].getVecesPrestamo()+"  Unidades en prestamo: "+listaProducto[option].getCantidadPrestamo());
     }
