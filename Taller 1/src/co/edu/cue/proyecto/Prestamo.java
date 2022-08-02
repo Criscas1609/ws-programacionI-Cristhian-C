@@ -37,7 +37,7 @@ public class Prestamo  {
         return detallePrestamo2;
     }
 
-    public void setProducto(double codigo, int diasSolicitados, int diasTranscurridos, Empleado empleado, Cliente cliente, Detalle_Prestamo detallePrestamo1, Detalle_Prestamo detallePrestamo2){
+    public void setPrestamo(double codigo, int diasSolicitados, int diasTranscurridos, Empleado empleado, Cliente cliente, Detalle_Prestamo detallePrestamo1, Detalle_Prestamo detallePrestamo2){
         this.codigo=codigo;
         this.diasSolicitados=diasSolicitados;
         this.diasTranscurridos=diasTranscurridos;

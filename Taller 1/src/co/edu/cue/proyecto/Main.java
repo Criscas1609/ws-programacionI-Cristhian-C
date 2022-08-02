@@ -10,6 +10,7 @@ public class Main {
             Cliente[] listaCliente= new Cliente[2];
             Empleado[] listaEmpleado=new Empleado[3];
             Producto[] listaProducto=new Producto[3];
+            Prestamo[] listaPrestamo=new Prestamo[3];
             Cliente cliente1= new Cliente("Jhoan",9514,"Cedula","Masculino","Armenia");
             listaCliente[0]=cliente1;
             Cliente cliente2= new Cliente("Sofia",1044,"Pasaporte","Femenino","Armenia");
@@ -51,10 +52,7 @@ public class Main {
 
                                     break;
                                 case 1:
-
-                                    break;
-                                default:
-
+                                    consultarPrestamosLista(listaPrestamo);
                                     break;
                             }
                         }while (menuPrestamos!=2);
@@ -176,4 +174,23 @@ public class Main {
     }
 
 //funciones de Prestamo_____________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+    static void consultarPrestamosLista(Prestamo[] listaPrestamo){
+        String message="";
+        if (String.valueOf(listaPrestamo[0])=="null"){
+            JOptionPane.showMessageDialog(null,"Lamento informarle que no hay ningun prestamo");
+        } else {
+            for (int x=0;x<3;x++){
+                if (String.valueOf(listaPrestamo[x])=="null"){
+                    break;
+                }
+                message+="El prestamo 1 es:"+"  Codigo: "+listaPrestamo[x].getCodigo()+"    Dias Solicitados: "+listaPrestamo[x].getdiasSolicitados()+"   Dias Transcurridos: "+listaPrestamo[x].getDiasTranscurridos()+"   Empleado: "+listaPrestamo[x].getEmpleado()+"   Cliente: "+listaPrestamo[x].getCliente()+"   Producto 1: "+listaPrestamo[x].getDetallePrestamo().getProducto().getNombre()+"   Cantidad producto 1: "+listaPrestamo[x].getDetallePrestamo().getCantidad()+"   Producto 2: "+listaPrestamo[x].getDetallePrestamo2().getProducto().getNombre()+"   Cantidad de productos 2: "+listaPrestamo[x].getDetallePrestamo2().getCantidad()+"\n";
+            }
+            JOptionPane.showMessageDialog(null,message);
+        }
+    }
+
+    static void crearPrestamo(){
+
+    }
+
 }
