@@ -7,6 +7,8 @@ public class Main {
             int menu;
             int menuPrestamos;
             int menuProductos;
+            String messageClientes="";
+            String messageEmpleados="";
             Cliente[] listaCliente= new Cliente[2];
             Empleado[] listaEmpleado=new Empleado[3];
             Producto[] listaProducto=new Producto[3];
@@ -49,7 +51,7 @@ public class Main {
                                     new Object[] { "Crear prestamo","Consultar datos de prestamo","Salir" },"null");
                             switch (menuPrestamos){
                                 case 0:
-
+                                    crearPrestamo(listaPrestamo,listaProducto,listaEmpleado,listaCliente);
                                     break;
                                 case 1:
                                     consultarPrestamosLista(listaPrestamo);
@@ -85,19 +87,19 @@ public class Main {
                         break;
                         /*--------case2 Impresion clientes----------------------------------------------------------------------------------------------------------------------*/
                     case 2:
-                        String message="";
+                        messageClientes="";
                         for (int x=0;x<2;x++){
-                            message+="Cliente "+(x+1)+"."+"    Nombre: "+ listaCliente[x].getNombre() + "    Identificacion: " + listaCliente[x].getIdentificacion() + "    Tipo de documento: "+ listaCliente[x].getTipoDocumento()+"    Genero: "+listaCliente[x].getGenero()+"    Ciudad: "+listaCliente[x].getCiudad()+"\n";
+                            messageClientes+="Cliente "+(x+1)+"."+"    Nombre: "+ listaCliente[x].getNombre() + "    Identificacion: " + listaCliente[x].getIdentificacion() + "    Tipo de documento: "+ listaCliente[x].getTipoDocumento()+"    Genero: "+listaCliente[x].getGenero()+"    Ciudad: "+listaCliente[x].getCiudad()+"\n";
                         }
-                        JOptionPane.showMessageDialog(null,message);
+                        JOptionPane.showMessageDialog(null,messageClientes);
                         break;
                     /*--------case3 Impresion empleados----------------------------------------------------------------------------------------------------------------------*/
                     case 3:
-                        String Emessage="";
+                        messageEmpleados="";
                         for (int x=0;x<3;x++){
-                            Emessage+="Empleado "+(x+1)+"."+"    Nombre: "+ listaEmpleado[x].getNombre()+ "    Codigo: " + listaEmpleado[x].getCodigo() + "    Correo: "+ listaEmpleado[x].getCorreo()+"    Años de antiguedad: "+listaEmpleado[x].getAñosDeAntiguedad()+"\n";
+                            messageEmpleados+="Empleado "+(x+1)+"."+"    Nombre: "+ listaEmpleado[x].getNombre()+ "    Codigo: " + listaEmpleado[x].getCodigo() + "    Correo: "+ listaEmpleado[x].getCorreo()+"    Años de antiguedad: "+listaEmpleado[x].getAñosDeAntiguedad()+"\n";
                         }
-                        JOptionPane.showMessageDialog(null,Emessage);
+                        JOptionPane.showMessageDialog(null,messageEmpleados);
                         break;
                     default:
                         JOptionPane.showMessageDialog(null,"Muchas gracias por usarme :)");
@@ -183,14 +185,59 @@ public class Main {
                 if (String.valueOf(listaPrestamo[x])=="null"){
                     break;
                 }
-                message+="El prestamo 1 es:"+"  Codigo: "+listaPrestamo[x].getCodigo()+"    Dias Solicitados: "+listaPrestamo[x].getdiasSolicitados()+"   Dias Transcurridos: "+listaPrestamo[x].getDiasTranscurridos()+"   Empleado: "+listaPrestamo[x].getEmpleado()+"   Cliente: "+listaPrestamo[x].getCliente()+"   Producto 1: "+listaPrestamo[x].getDetallePrestamo().getProducto().getNombre()+"   Cantidad producto 1: "+listaPrestamo[x].getDetallePrestamo().getCantidad()+"   Producto 2: "+listaPrestamo[x].getDetallePrestamo2().getProducto().getNombre()+"   Cantidad de productos 2: "+listaPrestamo[x].getDetallePrestamo2().getCantidad()+"\n";
+                message+="El prestamo 1 es:"+"  Codigo: "+listaPrestamo[x].getCodigo()+"    Dias Solicitados: "+listaPrestamo[x].getdiasSolicitados()+"   Dias Transcurridos: "+listaPrestamo[x].getDiasTranscurridos()+"   Empleado: "+listaPrestamo[x].getEmpleado().getNombre()+"   Cliente: "+listaPrestamo[x].getCliente().getNombre()+"   Producto 1: "+listaPrestamo[x].getDetallePrestamo().getProducto().getNombre()+"   Cantidad producto 1: "+listaPrestamo[x].getDetallePrestamo().getCantidad()+"   Producto 2: "+listaPrestamo[x].getDetallePrestamo2().getProducto().getNombre()+"   Cantidad de productos 2: "+listaPrestamo[x].getDetallePrestamo2().getCantidad()+"\n";
             }
             JOptionPane.showMessageDialog(null,message);
         }
     }
 
-    static void crearPrestamo(){
-
+    static void crearPrestamo(Prestamo[] listaPrestamo, Producto[] listaProducto,Empleado listaEmpleado[],Cliente listaCliente[]){
+        boolean confirm = true;
+        int cont=0;
+        for (int x=0;x<3;x++){
+            if (String.valueOf(listaPrestamo[x])=="null"){
+                confirm = false;
+                cont=x;
+                break;
+            }
+        }
+        if (confirm==true){
+            JOptionPane.showMessageDialog(null,"Lamento informarle pero estan copados los prestamos");
+        } else {
+            String messageClientes="";
+            for (int x=0;x<2;x++){
+                messageClientes+="Cliente "+(x+1)+"."+"    Nombre: "+ listaCliente[x].getNombre() + "    Identificacion: " + listaCliente[x].getIdentificacion() + "    Tipo de documento: "+ listaCliente[x].getTipoDocumento()+"    Genero: "+listaCliente[x].getGenero()+"    Ciudad: "+listaCliente[x].getCiudad()+"\n";
+            }
+            String messageEmpleados="";
+            for (int x=0;x<3;x++){
+                messageEmpleados+="Empleado "+(x+1)+"."+"    Nombre: "+ listaEmpleado[x].getNombre()+ "    Codigo: " + listaEmpleado[x].getCodigo() + "    Correo: "+ listaEmpleado[x].getCorreo()+"    Años de antiguedad: "+listaEmpleado[x].getAñosDeAntiguedad()+"\n";
+            }
+            String messageProducto="";
+            //Preguntar antes empleado, cliente, y productos
+            int optionEmpleado=JOptionPane.showOptionDialog(
+                    null,"Selecciones el empleado que realizo el prestamo \n \n"+messageEmpleados, "Opciones de empleados", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null,    // null para icono por defecto.
+                    new Object[] {  "Empleado 1","Empleado 2","Empleado 3" },"null");
+            int optionCliente=JOptionPane.showOptionDialog(
+                    null,"Selecciones el cliente que realizo el prestamo \n \n"+messageClientes, "Opciones de clientes", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null,    // null para icono por defecto.
+                    new Object[] {  "Cliente 1","Cliente 2"},"null");
+            for (int x=0;x<3;x++){
+                messageProducto+="El producto "+(x+1)+" es: "+listaProducto[x].getNombre()+"  Codigo: "+listaProducto[x].getCodeg()+ "  Unidades: "+listaProducto[x].getUnid()+"  Disponibilidad: "+listaProducto[x].getDisponibilidad()+"   Precio: "+listaProducto[x].getPrecio()+"  Veces de prestamo: "+ listaProducto[x].getVecesPrestamo()+"  Unidades prestadas: "+listaProducto[x].getCantidadPrestamo()+"\n";
+            }
+            int optionProducto1=JOptionPane.showOptionDialog(
+                    null,"Seleccione el producto 1 para el prestamo \n \n"+messageProducto, "Opciones de producto", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null,    // null para icono por defecto.
+                    new Object[] {  "Producto 1","Producto 2","Producto 3"},"null");
+            Detalle_Prestamo detallePrestamo1=new Detalle_Prestamo(listaProducto[optionProducto1],Integer.parseInt(JOptionPane.showInputDialog("Digite las unidades que desea de este producto 1")));
+            int optionProducto2=JOptionPane.showOptionDialog(
+                    null,"Seleccione el producto 2 para el prestamo \n \n"+messageProducto, "Opciones de producto", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null,    // null para icono por defecto.
+                    new Object[] {  "Producto 1","Producto 2","Producto 3"},"null");
+            int cantidadProducto1;
+            int cantidadProducto2;
+            Detalle_Prestamo detallePrestamo2=new Detalle_Prestamo(listaProducto[optionProducto2],cantidadProducto1=Integer.parseInt(JOptionPane.showInputDialog("Digite las unidades que desea de este producto 2")));
+            Prestamo prestamo=new Prestamo(Double.parseDouble(JOptionPane.showInputDialog("Digite el codigo del prestamo")),cantidadProducto2=Integer.parseInt(JOptionPane.showInputDialog("Digite los dias solicitados del prestamo")),0,listaEmpleado[optionEmpleado],listaCliente[optionCliente],detallePrestamo1,detallePrestamo2);
+            listaPrestamo[cont]=prestamo;
+            listaProducto[optionProducto1].setUnid(listaProducto[optionProducto1].getUnid()-cantidadProducto1);
+            listaProducto[optionProducto2].setUnid(listaProducto[optionProducto2].getUnid()-cantidadProducto2);
+        }
     }
 
 }

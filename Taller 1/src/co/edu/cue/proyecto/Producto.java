@@ -21,7 +21,9 @@ public class Producto {
         this.cantidadPrestamo = cantidadPrestamo;
     }
 
-
+    public void setUnid(int unid) {
+        this.unid = unid;
+    }
 
     public String getNombre() {
         return nombre;

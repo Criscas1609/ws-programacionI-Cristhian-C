@@ -16,4 +16,9 @@ public class Detalle_Prestamo {
         this.producto = producto;
         this.cantidad = cantidad;
     }
+
+    public Detalle_Prestamo(Producto producto, int cantidad){
+        this.producto = producto;
+        this.cantidad = cantidad;
+    }
 }

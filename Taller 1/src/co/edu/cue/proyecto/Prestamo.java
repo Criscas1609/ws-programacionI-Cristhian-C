@@ -46,4 +46,14 @@ public class Prestamo  {
         this.detallePrestamo1=detallePrestamo1;
         this.detallePrestamo2=detallePrestamo2;
     }
+
+    public Prestamo(double codigo, int diasSolicitados, int diasTranscurridos, Empleado empleado, Cliente cliente, Detalle_Prestamo detallePrestamo1, Detalle_Prestamo detallePrestamo2){
+        this.codigo=codigo;
+        this.diasSolicitados=diasSolicitados;
+        this.diasTranscurridos=diasTranscurridos;
+        this.empleado=empleado;
+        this.cliente=cliente;
+        this.detallePrestamo1=detallePrestamo1;
+        this.detallePrestamo2=detallePrestamo2;
+    }
 }
