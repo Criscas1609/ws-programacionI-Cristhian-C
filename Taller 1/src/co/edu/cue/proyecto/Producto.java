@@ -21,6 +21,14 @@ public class Producto {
         this.cantidadPrestamo = cantidadPrestamo;
     }
 
+    public boolean isDisponibilidad() {
+        return disponibilidad;
+    }
+
+    public void setDisponibilidad(boolean disponibilidad) {
+        this.disponibilidad = disponibilidad;
+    }
+
     public void setUnid(int unid) {
         this.unid = unid;
     }

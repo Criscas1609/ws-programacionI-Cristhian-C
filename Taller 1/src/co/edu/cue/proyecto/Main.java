@@ -4,6 +4,8 @@ import javax.swing.*;
 
 public class Main {
     public static void main(String[] args) {
+            String number="10";
+            System.out.println(Integer.parseInt(number));
             int menu;
             int menuPrestamos;
             int menuProductos;
@@ -52,6 +54,7 @@ public class Main {
                             switch (menuPrestamos){
                                 case 0:
                                     crearPrestamo(listaPrestamo,listaProducto,listaEmpleado,listaCliente);
+                                    comprobarDisponibilidad(listaProducto);
                                     break;
                                 case 1:
                                     consultarPrestamosLista(listaPrestamo);
@@ -226,18 +229,35 @@ public class Main {
             int optionProducto1=JOptionPane.showOptionDialog(
                     null,"Seleccione el producto 1 para el prestamo \n \n"+messageProducto, "Opciones de producto", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null,    // null para icono por defecto.
                     new Object[] {  "Producto 1","Producto 2","Producto 3"},"null");
-            Detalle_Prestamo detallePrestamo1=new Detalle_Prestamo(listaProducto[optionProducto1],Integer.parseInt(JOptionPane.showInputDialog("Digite las unidades que desea de este producto 1")));
+            int cantidadProducto1;
+            Detalle_Prestamo detallePrestamo1=new Detalle_Prestamo(listaProducto[optionProducto1],cantidadProducto1=Integer.parseInt(JOptionPane.showInputDialog("Digite las unidades que desea de este producto 1 (como maximo " + listaProducto[optionProducto1].getUnid()+")")));
             int optionProducto2=JOptionPane.showOptionDialog(
                     null,"Seleccione el producto 2 para el prestamo \n \n"+messageProducto, "Opciones de producto", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null,    // null para icono por defecto.
                     new Object[] {  "Producto 1","Producto 2","Producto 3"},"null");
-            int cantidadProducto1;
+
             int cantidadProducto2;
-            Detalle_Prestamo detallePrestamo2=new Detalle_Prestamo(listaProducto[optionProducto2],cantidadProducto1=Integer.parseInt(JOptionPane.showInputDialog("Digite las unidades que desea de este producto 2")));
-            Prestamo prestamo=new Prestamo(Double.parseDouble(JOptionPane.showInputDialog("Digite el codigo del prestamo")),cantidadProducto2=Integer.parseInt(JOptionPane.showInputDialog("Digite los dias solicitados del prestamo")),0,listaEmpleado[optionEmpleado],listaCliente[optionCliente],detallePrestamo1,detallePrestamo2);
+            Detalle_Prestamo detallePrestamo2=new Detalle_Prestamo(listaProducto[optionProducto2],cantidadProducto2=Integer.parseInt(JOptionPane.showInputDialog("Digite las unidades que desea de este producto 2 (como maximo "+ listaProducto[optionProducto2].getUnid()+")")));
+            Prestamo prestamo=new Prestamo(Double.parseDouble(JOptionPane.showInputDialog("Digite el codigo del prestamo")),Integer.parseInt(JOptionPane.showInputDialog("Digite los dias solicitados del prestamo")),0,listaEmpleado[optionEmpleado],listaCliente[optionCliente],detallePrestamo1,detallePrestamo2);
             listaPrestamo[cont]=prestamo;
+            //cambios producto 1
             listaProducto[optionProducto1].setUnid(listaProducto[optionProducto1].getUnid()-cantidadProducto1);
+            listaProducto[optionProducto1].setVecesPrestamo(listaProducto[optionProducto1].getVecesPrestamo()+1);
+            listaProducto[optionProducto1].setCantidadPrestamo(listaProducto[optionProducto1].getCantidadPrestamo()+cantidadProducto1);
+            //cambios producto 2
             listaProducto[optionProducto2].setUnid(listaProducto[optionProducto2].getUnid()-cantidadProducto2);
+            listaProducto[optionProducto2].setVecesPrestamo(listaProducto[optionProducto2].getVecesPrestamo()+1);
+            listaProducto[optionProducto2].setCantidadPrestamo(listaProducto[optionProducto2].getCantidadPrestamo()+cantidadProducto2);
+
         }
     }
 
+
+    //comprobar disponibilidad
+    static void comprobarDisponibilidad(Producto listaProducto[]){
+        for (int x=0;x<3;x++){
+            if(listaProducto[x].getUnid()==0){
+                listaProducto[x].setDisponibilidad(false);
+            }
+        }
+    }
 }
