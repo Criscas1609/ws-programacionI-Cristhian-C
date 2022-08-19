@@ -45,4 +45,14 @@ public class Empleado {
         this.correo = correo;
         this.añosDeAntiguedad = añosDeAntiguedad;
     }
+
+    @Override
+    public String toString() {
+        return "Empleado{" +
+                "codigo=" + codigo +
+                ", nombre='" + nombre + '\'' +
+                ", correo='" + correo + '\'' +
+                ", añosDeAntiguedad=" + añosDeAntiguedad +
+                '}';
+    }
 }

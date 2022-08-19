@@ -2,7 +2,12 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/Ejemplo/Ejemplo.iml" filepath="$PROJECT_DIR$/Ejemplo/Ejemplo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Ejercicio_Herencia/Ejercicio_Herencia.iml" filepath="$PROJECT_DIR$/Ejercicio_Herencia/Ejercicio_Herencia.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Ejercicios_Matrices/Ejercicios_Matrices.iml" filepath="$PROJECT_DIR$/Ejercicios_Matrices/Ejercicios_Matrices.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Practica_2/Practica_2.iml" filepath="$PROJECT_DIR$/Practica_2/Practica_2.iml" />
       <module fileurl="file://$PROJECT_DIR$/Taller 1/Taller 1.iml" filepath="$PROJECT_DIR$/Taller 1/Taller 1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Ejercicio Herencia/src/co.edu.cue.proyecto/co.edu.cue.proyecto.iml" filepath="$PROJECT_DIR$/Ejercicio Herencia/src/co.edu.cue.proyecto/co.edu.cue.proyecto.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/ws-programacionI.iml" filepath="$PROJECT_DIR$/.idea/ws-programacionI.iml" />
     </modules>
   </component>
