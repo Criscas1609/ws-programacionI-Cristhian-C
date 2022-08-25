@@ -1,6 +1,6 @@
 package co.edu.cue.practica2.model;
 
-public class Material extends Jueguetes{
+public class Material {
 
     private String plastico;
     private String tela;
