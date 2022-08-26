@@ -12,26 +12,15 @@ import javax.swing.*;
 
 public class Main {
     public static void main(String[] args){
-        Empleado[] empleados = new Empleado[5];
-        Empleado empleado= new Empleado("laura","334","3444","dddd","2","23333");
-        int contadorEmpleado = 0;
-        Cliente[] cliente = new Cliente[2];
-        Cliente cliente1 = new Cliente("laura","34673","33","hdjd","3","djje");
-        cliente[0]=cliente1;
-        int contadorCliente = 0;
-        Juguete[] toys = new Juguete[5];
-        Juguete juguete = new Juguete("hola",3000,2,"Plastico");
-        toys[0] =juguete;
-        int contadorJuguete = 1;
-        Detalle[] detalle = new Detalle[4];
-        Detalle detail = new Detalle(1,juguete,2000,4500);
-        detalle[0]=detail;
-        ControlClientes controlCliente = new ControlClientes();
-        ControlJuguete controlJuguete = new ControlJuguete();
-        ControlVenta controlVenta = new ControlVenta();
-        ControlEmpleado controlUser = new ControlEmpleado();
-        ToyServiceImpl serviceToy = new ToyServiceImpl();
-        Venta venta= new Venta(detalle,cliente,empleado,juguete);
+
+        final ControlClientes controlCliente = new ControlClientes();
+        final ControlJuguete controlJuguete = new ControlJuguete();
+        final ControlVenta controlVenta = new ControlVenta();
+        final ControlEmpleado controlUser = new ControlEmpleado();
+        //final ToyServiceImpl serviceToy = new ToyServiceImpl();
+        //final UsuarioServiceImpl serviceUsuario = new UsuarioServiceImpl();
+
+        //Venta venta= new Venta(detalle,cliente,empleado,juguete);
         int opcion;
         do{
             opcion = JOptionPane.showOptionDialog(
