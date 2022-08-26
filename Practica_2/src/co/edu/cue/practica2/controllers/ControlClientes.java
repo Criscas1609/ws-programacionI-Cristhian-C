@@ -8,7 +8,12 @@ import javax.swing.*;
 public class ControlClientes {
     UsuarioServiceImpl service = new UsuarioServiceImpl();
 
-    public void crearClienteF(Cliente[] cliente,int posicion){
+    public UsuarioServiceImpl getService() {
+        return service;
+    }
+
+    public void crearClienteF(){
+
         String nombre = JOptionPane.showInputDialog("Ingrese el nombre del cliente");
         String cedula = JOptionPane.showInputDialog("Ingrese la cedula");
         String telefono = JOptionPane.showInputDialog("Ingrese el telefono");
@@ -16,7 +21,7 @@ public class ControlClientes {
         String cumpleaños = JOptionPane.showInputDialog("Ingrese el cumpleaños");
         String email = JOptionPane.showInputDialog("Ingrese el correo");
 
-        cliente[posicion] = service.crearCliente(nombre,cedula,telefono,direccion,cumpleaños,email);
+        service.crearCliente(nombre,cedula,telefono,direccion,cumpleaños,email);
 
     }
 }

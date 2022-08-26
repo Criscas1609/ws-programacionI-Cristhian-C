@@ -7,13 +7,40 @@ import javax.swing.*;
 
 
 public class ToyServiceImpl implements Toy {
-    @Override
-    public Juguete crearJuguete(String nombre, double precio, int cantidad, String material) {
-        return new Juguete(nombre, precio, cantidad, material);
+
+    private  Juguete toys[] = new Juguete[5];
+    int contadorJuguete = 1;
+
+    public ToyServiceImpl(Juguete[] toys) {
+        this.toys = toys;
     }
 
-    public Juguete modificarExistencia(Juguete[] juguetes, int cantidades, String nombre) {
-        for (Juguete toy : juguetes) {
+    public Juguete[] getToys() {
+        return toys;
+    }
+
+    public void setToys(Juguete[] toys) {
+        this.toys = toys;
+    }
+
+
+    public ToyServiceImpl() {
+
+    }
+
+    public void prueba(){
+        Juguete juguete = new Juguete("hola",3000,2,"Plastico");
+        toys[0]=juguete;
+    }
+    @Override
+    public Juguete crearJuguete(String nombre, double precio, int cantidad, String material) {
+        toys[contadorJuguete]=new Juguete(nombre, precio, cantidad, material);
+        contadorJuguete++;
+        return null;
+    }
+
+    public Juguete modificarExistencia( int cantidades, String nombre) {
+        for (Juguete toy : toys) {
             if (String.valueOf(toy) != "null" && nombre.equals(toy.getNombre())) {
                 toy.setCantidad(cantidades + toy.getCantidad());
                 JOptionPane.showMessageDialog(null, "Quedaron " + toy.getCantidad() + " cantidades");
@@ -23,12 +50,12 @@ public class ToyServiceImpl implements Toy {
     }
 
 
-    public Juguete juguetesPorTipo(Juguete[] juguetes) {
+    public Juguete juguetesPorTipo() {
         int contadorPlastico = 0;
         int contadorTela = 0;
         int contadorElectronico = 0;
 
-        for (Juguete juguete : juguetes) {
+        for (Juguete juguete : toys) {
             if (String.valueOf(juguete) != "null") {
                 if ("Plastico".equals(juguete.getMaterial())) {
                     contadorPlastico += juguete.getCantidad();
@@ -50,9 +77,9 @@ public class ToyServiceImpl implements Toy {
         return null;
     }
 
-    public Juguete informeCantidad(Juguete[] juguetes) {
+    public Juguete informeCantidad() {
         int cantidadDeJuguetes = 0;
-        for (Juguete juguete : juguetes) {
+        for (Juguete juguete : toys) {
             if (String.valueOf(juguete) != "null") {
                 cantidadDeJuguetes += juguete.getCantidad();
             }
@@ -62,9 +89,9 @@ public class ToyServiceImpl implements Toy {
         return null;
     }
 
-    public Juguete informeValorTotal(Juguete[] juguetes) {
+    public Juguete informeValorTotal() {
         int contadorPrecio = 0;
-        for (Juguete juguete : juguetes) {
+        for (Juguete juguete : toys) {
             if (String.valueOf(juguete) != "null") {
                 contadorPrecio += juguete.getPrecio();
             }
@@ -74,11 +101,11 @@ public class ToyServiceImpl implements Toy {
         return null;
     }
 
-    public Juguete informeTipoJuguete(Juguete[] juguetes) {
+    public Juguete informeTipoJuguete() {
         int contadorPlastico = 0;
         int contadorTela = 0;
         int contadorElectronico = 0;
-        for (Juguete juguete : juguetes) {
+        for (Juguete juguete : toys) {
             if (String.valueOf(juguete) != "null") {
                 if ("Plastico".equals(juguete.getMaterial())) {
                     contadorPlastico += juguete.getCantidad();
@@ -105,11 +132,11 @@ public class ToyServiceImpl implements Toy {
         return null;
     }
 
-    public Juguete informeTipoJugueteMenor(Juguete[] juguetes) {
+    public Juguete informeTipoJugueteMenor() {
         int contadorPlastico = 0;
         int contadorTela = 0;
         int contadorElectronico = 0;
-        for (Juguete juguete : juguetes) {
+        for (Juguete juguete : toys) {
             if (String.valueOf(juguete) != "null") {
                 if ("Plastico".equals(juguete.getMaterial())) {
                     contadorPlastico += juguete.getCantidad();
@@ -134,9 +161,9 @@ public class ToyServiceImpl implements Toy {
         return null;
     }
 
-    public Juguete informeFiltroUsuario(Juguete[] juguetes, double precioUsuario) {
+    public Juguete informeFiltroUsuario(double precioUsuario) {
         //String arregloJuguetes[];
-        for (Juguete juguete : juguetes) {
+        for (Juguete juguete : toys) {
             if (String.valueOf(juguete) != "null") {
                 if(precioUsuario<=juguete.getPrecio()){
                     JOptionPane.showMessageDialog(null,"Los juguetes con un valor mayor a: "+precioUsuario+"son: \n"

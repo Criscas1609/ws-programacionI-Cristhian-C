@@ -7,6 +7,7 @@ import co.edu.cue.practica2.controllers.ControlVenta;
 import co.edu.cue.practica2.model.*;
 import co.edu.cue.practica2.services.Toy;
 import co.edu.cue.practica2.services.impl.ToyServiceImpl;
+import co.edu.cue.practica2.services.impl.UsuarioServiceImpl;
 
 import javax.swing.*;
 
@@ -34,22 +35,18 @@ public class Main {
                             new Object[]{"Agregar Juguete", "Agregar Cliente", "Agregar Empleado", "Salir"}, "null");
                     switch (opcionNew){
                         case 0:
-                            controlJuguete.crearJuguetes(toys,contadorJuguete);
-                            contadorJuguete++;
+                            controlJuguete.crearJuguetes();
                             break;
                         case 1:
-                            controlCliente.crearClienteF(cliente,contadorCliente);
-                            contadorCliente++;
+                            controlCliente.crearClienteF();
                             break;
                         case 2:
-                            controlUser.crearEmpleadoN(empleados,contadorEmpleado);
-                            contadorEmpleado++;
+                            controlUser.crearEmpleadoN();
                             break;
                     }break;
 
-
                 case 1:
-                    controlVenta.realizarCompra(empleados,cliente,toys,detalle);
+                    controlVenta.realizarCompra(controlUser.getService(),controlJuguete.getService());
                     break;
                 case 2:
                     int opcionExist=0;
@@ -58,7 +55,7 @@ public class Main {
                                 new Object[]{"Aumentar Juguetes", "Salir"}, "null");
                         switch (opcionExist){
                             case 0:
-                                controlJuguete.modificarExistencias(toys);
+                                controlJuguete.modificarExistencias();
                                 break;
                         }
                     break;
@@ -69,22 +66,22 @@ public class Main {
                                 new Object[]{"Juguetes por tipo", "Cantidad total", "Valor total","Cantidad mayor por tipo","Cantidad menor por tipo","Mayor valor","Salir"}, "null");
                         switch (opcionInf){
                             case 0:
-                                serviceToy.juguetesPorTipo(toys);
+                                controlJuguete.getService().juguetesPorTipo();
                                 break;
                             case 1:
-                                serviceToy.informeCantidad(toys);
+                                controlJuguete.getService().informeCantidad();
                                 break;
                             case 2:
-                                serviceToy.informeValorTotal(toys);
+                                controlJuguete.getService().informeValorTotal();
                                 break;
                             case 3:
-                                serviceToy.informeTipoJuguete(toys);
+                                controlJuguete.getService().informeTipoJuguete();
                                 break;
                             case 4:
-                                serviceToy.informeTipoJugueteMenor(toys);
+                                controlJuguete.getService().informeTipoJugueteMenor();
                                 break;
                             case 5:
-                                controlJuguete.informeFiltroUsuario(toys);
+                                controlJuguete.informeFiltroUsuario();
                                 break;
                         }
                     break;

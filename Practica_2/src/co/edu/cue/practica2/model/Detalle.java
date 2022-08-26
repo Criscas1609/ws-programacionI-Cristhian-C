@@ -3,13 +3,13 @@ package co.edu.cue.practica2.model;
 public class Detalle {
      private int cantidad;
      private Juguete juguete;
-     private double precio;
      private int diasSolicitados;
+     private double subtotal =0;
 
-     public Detalle(int cantidad, Juguete juguete, double precio, int diasSolicitados) {
+     public Detalle(int cantidad, Juguete juguete, int diasSolicitados) {
           this.cantidad = cantidad;
           this.juguete = juguete;
-          this.precio = precio;
+          subtotal = juguete.getPrecio()*(cantidad)-(Math.random()*(5000 - 1000)+1000);
           this.diasSolicitados = diasSolicitados;
      }
 
@@ -30,13 +30,6 @@ public class Detalle {
      }
 
 
-     public double getPrecio() {
-          return precio;
-     }
-
-     public void setPrecio(double precio) {
-          this.precio = precio;
-     }
 
      public int getDiasSolicitados() {
           return diasSolicitados;

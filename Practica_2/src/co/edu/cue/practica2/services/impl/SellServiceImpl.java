@@ -13,15 +13,17 @@ public class VentaService {
     int contador=0;
 
                         for(int i=0;i<canti;i++){
-                            System.out.println("quinto");
+                            System.out.println("hola5");
                             for ( Juguete toy : juguete) {
-                                System.out.println("sexto");
-                                if(toy !=null && nombreJuguete != "null" && toy.getNombre().equals(nombreJuguete)){
-                                    System.out.println("septimo");
-                                    Detalle detalle1 = new Detalle(unidadesPrestadas,toy, toy.getPrecio(), diasSolicitado);
-                                    detalle[contador]=detalle1;
-                                    System.out.println(detalle.length);
-                                    contador++;
+                                if(String.valueOf(toy)!= "null"&& nombreJuguete != "null" && toy.getNombre().equals(nombreJuguete)){
+                                    if(unidadesPrestadas<toy.getCantidad()){
+                                        Detalle detalle1 = new Detalle(unidadesPrestadas,toy, diasSolicitado);
+                                        detalle[contador]=detalle1;
+                                        System.out.println(detalle.length);
+                                        contador++;
+                                    }else{
+                                        JOptionPane.showMessageDialog(null,"No hay disponibles tantas cantidades, disminuye las cantidades");
+                                    }
                                 }
                             }
                         }

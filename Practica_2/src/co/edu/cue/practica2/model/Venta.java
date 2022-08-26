@@ -3,11 +3,11 @@ package co.edu.cue.practica2.model;
 public class Venta {
 
    private Detalle[] detalle = new Detalle[5];
-   private Object cliente;
-   private Object empleado;
+   private Cliente cliente;
+   private Empleado empleado;
    private Object juguete;
 
-   public Venta(Detalle[] detalle, Object cliente, Object empleado, Object juguete) {
+   public Venta(Detalle[] detalle, Cliente cliente, Empleado empleado, Object juguete) {
       this.detalle = detalle;
       this.cliente = cliente;
       this.empleado = empleado;
@@ -26,7 +26,7 @@ public class Venta {
       return cliente;
    }
 
-   public void setCliente(Object cliente) {
+   public void setCliente(Cliente cliente) {
       this.cliente = cliente;
    }
 
@@ -34,7 +34,7 @@ public class Venta {
       return empleado;
    }
 
-   public void setEmpleado(Object empleado) {
+   public void setEmpleado(Empleado empleado) {
       this.empleado = empleado;
    }
 
