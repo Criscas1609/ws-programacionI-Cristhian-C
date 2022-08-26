@@ -6,9 +6,21 @@ import co.edu.cue.practica2.services.Sell;
 import javax.swing.*;
 import java.util.Arrays;
 
-public class VentaService {
-    public void  comprar(Empleado[] empleados, Cliente[] clientes, Juguete[] juguete, Detalle[] detalle,
-                         int contador,String nombreUsuario,String nombreVendedor,String nombreJuguete, int canti,
+public class SellServiceImpl implements Sell {
+    private Venta[] ventas = new Venta[4];
+    private Detalle[] detalle = new Detalle[4];
+    int contadorVenta = 0;
+
+    public SellServiceImpl(Detalle[] detalle, int contadorVenta) {
+        this.detalle = detalle;
+        this.contadorVenta = contadorVenta;
+    }
+
+    public SellServiceImpl() {
+
+    }
+
+    public Venta comprar( Juguete[] juguete, Cliente nombreUsuario, Empleado nombreVendedor, String nombreJuguete, int canti,
                          int diasSolicitado, int unidadesPrestadas){
     int contador=0;
 

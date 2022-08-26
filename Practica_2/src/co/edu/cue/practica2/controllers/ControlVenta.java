@@ -20,4 +20,5 @@ public class ControlVenta {
         sellServiceImpl.comprar( service.getToys(), nombreUsuario, nombreVendedor, nombreJuguete, canti, diasSolicitado, unidadesPrestadas);
         service.modificarExistencia(-unidadesPrestadas, nombreJuguete);
     }
+
 }

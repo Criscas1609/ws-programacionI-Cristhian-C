@@ -2,7 +2,6 @@ package co.edu.cue.practica2.controllers;
 
 import co.edu.cue.practica2.model.Juguete;
 import co.edu.cue.practica2.model.Material;
-import co.edu.cue.practica2.services.Toy;
 import co.edu.cue.practica2.services.impl.ToyServiceImpl;
 
 import javax.swing.*;
@@ -21,7 +20,7 @@ public class ControlJuguete {
         String nombre = JOptionPane.showInputDialog("Ingrese el nombre del juguete");
         double precio = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el precio del juguete"));
         int cantidad = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la cantidad de juguetes"));
-        int material = Integer.parseInt(JOptionPane.showInputDialog("Escoja 1 para juguetes de plastico" + "\n" + " escoja 2 para juguetes electronicos" + "\n" + "Escoja 3 ara juguetes de tela"));
+        int material = Integer.parseInt(JOptionPane.showInputDialog("Escoja 1 para juguetes de plastico" + "\n" + " escoja 2 para juguetes electronicos" + "\n" + "Escoja 3 para juguetes de tela"));
         switch (material){
             case 1:
                  toyService.crearJuguete(nombre,precio,cantidad,Material.plastico);
@@ -44,13 +43,22 @@ public class ControlJuguete {
         toyService.modificarExistencia(cantidades,nombre);
     }
 
-
-
-
-
-    public void informeFiltroUsuario(Juguete[] juguetes){
+    public void informeFiltroUsuario(){
         double precioUsuario = Double.parseDouble(JOptionPane.showInputDialog("Ingrese su presupuesto"));
        toyService.informeFiltroUsuario(precioUsuario);
+    }
+
+    public void informeTipoJugueteMenor(){
+        toyService.informeTipoJugueteMenor();
+    }
+    public void informeTipoJuguete(){
+        toyService.informeTipoJuguete();
+    }
+    public void informeValorTotal(){
+        toyService.informeValorTotal();
+    }
+    public  void juguetesPorTipos(){
+        toyService.juguetesPorTipo();
     }
 }
 
